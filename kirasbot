@@ -1,0 +1,29 @@
+function postMessageToDiscord(message) {
+
+  message = message || "・rules
+︵ all the rules are not written, please use logic ::
+
+╭ :gh: follow the tos & gl
+:white_dot: no nsfw/gore, drama, use of slurs, etc
+:white_dot: no doxxing or sending other's personal info
+:white_dot: be respectful to everyone
+╰ :wh: do not be discriminatory
+・follow them or there will be consequences";
+
+  var discordUrl = 'https://discord.com/api/webhooks/923780201551364166/UGl2OvXhc2u20ByvuxwK2Z6efCoq2tYYTIb-oCFyCfHBHB3KHvsGvMNL5ZJ43F0TeSG2';
+  var payload = JSON.stringify({content: message});
+
+  var params = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: "POST",
+    payload: payload,
+    muteHttpExceptions: true
+  };
+
+  var response = UrlFetchApp.fetch(discordUrl, params);
+
+  Logger.log(response.getContentText());
+
+}
